@@ -2,10 +2,11 @@
 //:
 //: Use `func` to declare a function. Call a function by following its name with a list of arguments in parentheses. Use `->` to separate the parameter names and types from the function’s return type.
 //:
-func greet(name: String, day: String) -> String {
-    return "Hello \(name), today is \(day)."
+func greet(name: String, lunchSpecial: String) -> String {
+    return "Hello \(name), today's lunch special is \(lunchSpecial)."
 }
-greet("Bob", day: "Tuesday")
+greet("Bob",  lunchSpecial: "pizza")
+
 
 //: > **Experiment**:
 //: > Remove the `day` parameter. Add a parameter to include today’s lunch special in the greeting.
@@ -31,6 +32,8 @@ func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
 let statistics = calculateStatistics([5, 3, 100, 3, 9])
 print(statistics.sum)
 print(statistics.2)
+print(statistics.0)
+print(statistics.max)
 
 //: Functions can also take a variable number of arguments, collecting them into an array.
 //:
@@ -41,8 +44,25 @@ func sumOf(numbers: Int...) -> Int {
     }
     return sum
 }
+func averageOf(numbers: Float...) -> Float {
+    var total: Float = 0.0
+    var divisorValue: Float = 0.0
+    var average: Float = 0.0
+    for number in numbers {
+        divisorValue++
+        total += number
+    }
+    if divisorValue == 0{
+        return 0
+    } else {
+        average = total / divisorValue
+        return average
+    }
+}
 sumOf()
-sumOf(42, 597, 12)
+sumOf(42, 601, 12)
+averageOf()
+averageOf(42, 601, 12)
 
 //: > **Experiment**:
 //: > Write a function that calculates the average of its arguments.
@@ -75,23 +95,29 @@ increment(7)
 func hasAnyMatches(list: [Int], condition: Int -> Bool) -> Bool {
     for item in list {
         if condition(item) {
+            print("We have a match")
             return true
         }
     }
+    print("We do not have a match")
     return false
 }
 func lessThanTen(number: Int) -> Bool {
     return number < 10
 }
-var numbers = [20, 19, 7, 12]
+var numbers = [13, 51, 12, 52]
 hasAnyMatches(numbers, condition: lessThanTen)
 
 //: Functions are actually a special case of closures: blocks of code that can be called later. The code in a closure has access to things like variables and functions that were available in the scope where the closure was created, even if the closure is in a different scope when it is executed—you saw an example of this already with nested functions. You can write a closure without a name by surrounding code with braces (`{}`). Use `in` to separate the arguments and return type from the body.
 //:
+// Returns 0 for odd numbers and 1 for evens
 numbers.map({
     (number: Int) -> Int in
-    let result = 3 * number
-    return result
+    if number % 2 != 0 {
+        return 0
+    }else {
+     return 1
+    }
 })
 
 //: > **Experiment**:
@@ -104,6 +130,8 @@ print(mappedNumbers)
 
 //: You can refer to parameters by number instead of by name—this approach is especially useful in very short closures. A closure passed as the last argument to a function can appear immediately after the parentheses. When a closure is the only argument to a function, you can omit the parentheses entirely.
 //:
+// What's all this? It looks like .sort is a built-in function, 
+// but what are the dollar signs about?
 let sortedNumbers = numbers.sort { $0 > $1 }
 print(sortedNumbers)
 
