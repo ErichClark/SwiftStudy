@@ -41,6 +41,11 @@ class NamedShape {
 //:
 //: Methods on a subclass that override the superclass’s implementation are marked with `override`—overriding a method by accident, without `override`, is detected by the compiler as an error. The compiler also detects methods with `override` that don’t actually override any method in the superclass.
 //:
+//I tried to use math constants from Cocoa but found them very wonky. I got it to calculate with the M_PI constant, but it gave me a huge number and wouldn't show my output, like I crashed Xcode or something. So I commented out that code. Maybe it's my setup? I thought maybe you could try it and see if it works on your computer.
+
+//import Cocoa
+//var M_PI: CDouble {get}
+
 class Square: NamedShape {
     var sideLength: Double
 
@@ -62,6 +67,27 @@ let test = Square(sideLength: 5.2, name: "my test square")
 test.area()
 test.simpleDescription()
 
+class Circle: NamedShape{
+    var  radius: Double
+    
+    init(radius: Double, name: String){
+        self.radius = radius
+        super.init(name: name)
+    }
+    var area: Double {
+        get {
+  //          return radius * radius * M_PI
+            return radius * radius * 3.14
+            
+        }
+    }
+    
+    override func simpleDescription() -> String {
+        return "\(name) is a circle with radius \(radius) and an area of \(area)"
+    }
+}
+var testCircle = Circle(radius: 6.2, name: "My Test Circle")
+print(testCircle.simpleDescription())
 //: > **Experiment**:
 //: > Make another subclass of `NamedShape` called `Circle` that takes a radius and a name as arguments to its initializer. Implement an `area()` and a `simpleDescription()` method on the `Circle` class.
 //:
