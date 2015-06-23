@@ -21,16 +21,27 @@ enum Rank: Int {
         }
     }
 }
-func compareCards(card1: String, card2: String){
-    let firstCard: Int = Rank.card1
-    let secondCard: Int = Rank.card2
-    if (firstCard > secondCard) {
-        print("\(card1) beats \(card2).")
-    }else{
-        print("\(card2) beats \(card1).")
+func compareCards(card1: Rank, card2: Rank){
+    let firstCardValue: Int = card1.rawValue
+    let secondCardValue: Int = card2.rawValue
+
+    if (firstCardValue == 1 || secondCardValue == 1) {
+        print("Aces are low.")
+    }
+    if (firstCardValue > secondCardValue) {
+        print("The \(card1.simpleDescription()) beats the  \(card2.simpleDescription()). First card wins!" )
+    }else if (firstCardValue < secondCardValue) {
+    print("The \(card2.simpleDescription()) beats the \(card1.simpleDescription()). Second card wins!")
+    }else if (firstCardValue == secondCardValue) {
+        print("These are the same card. I de-clare war!")
+    }else {
+        print("I don't recognize these cards")
     }
 }
-compareCards("ace", card2: "jack")
+compareCards(Rank.Ace, card2: Rank.Four)
+compareCards(Rank.Queen, card2: Rank.King)
+compareCards(Rank.Ace, card2: Rank.Ace)
+compareCards(Rank.Jack, card2: Rank.Five)
 let ace = Rank.Ace
 let aceRawValue = ace.rawValue
 let jack = Rank.Jack
@@ -64,9 +75,23 @@ enum Suit {
                 return "clubs"
         }
     }
+    func color() -> String {
+        switch self {
+            case .Spades:
+                return "black"
+            case .Clubs:
+                return "black"
+            case .Hearts:
+                return "red"
+            case .Diamonds:
+                return "red"
+            }
+        
+    }
 }
 let hearts = Suit.Hearts
 let heartsDescription = hearts.simpleDescription()
+print("\(heartsDescription) are \(hearts.color())")
 
 //: > **Experiment**:
 //: > Add a `color()` method to `Suit` that returns “black” for spades and clubs, and returns “red” for hearts and diamonds.
@@ -75,15 +100,25 @@ let heartsDescription = hearts.simpleDescription()
 //:
 //: Use `struct` to create a structure. Structures support many of the same behaviors as classes, including methods and initializers. One of the most important differences between structures and classes is that structures are always copied when they are passed around in your code, but classes are passed by reference.
 //:
+// Still working on this one!
+
 struct Card {
-    var rank: Rank
-    var suit: Suit
-    func simpleDescription() -> String {
-        return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
+//    var rank: Rank
+//    var suit: Suit
+//    func simpleDescription() -> String {
+//        return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
+ //   }
+    func makeDeck() {
+        for suit in Suit(){
+            for rank in Rank{
+                simpleDescription()
+            }
+        }
     }
 }
-let threeOfSpades = Card(rank: .Three, suit: .Spades)
-let threeOfSpadesDescription = threeOfSpades.simpleDescription()
+//let threeOfSpades = Card(rank: .Three, suit: .Spades)
+//let threeOfSpadesDescription = threeOfSpades.simpleDescription()
+
 
 //: > **Experiment**:
 //: > Add a method to `Card` that creates a full deck of cards, with one card of each combination of rank and suit.
