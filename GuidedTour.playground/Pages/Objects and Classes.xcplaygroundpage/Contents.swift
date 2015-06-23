@@ -83,7 +83,7 @@ class Circle: NamedShape{
     }
     
     override func simpleDescription() -> String {
-        return "\(name) is a circle with radius \(radius) and an area of \(area)"
+        return "\(name) is a circle with radius \(radius) and an area of \(area)."
     }
 }
 var testCircle = Circle(radius: 6.2, name: "My Test Circle")

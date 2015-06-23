@@ -21,8 +21,21 @@ enum Rank: Int {
         }
     }
 }
+func compareCards(card1: String, card2: String){
+    let firstCard: Int = Rank.card1
+    let secondCard: Int = Rank.card2
+    if (firstCard > secondCard) {
+        print("\(card1) beats \(card2).")
+    }else{
+        print("\(card2) beats \(card1).")
+    }
+}
+compareCards("ace", card2: "jack")
 let ace = Rank.Ace
 let aceRawValue = ace.rawValue
+let jack = Rank.Jack
+let jackRawValue = jack.rawValue
+print(jack.rawValue)
 
 //: > **Experiment**:
 //: > Write a function that compares two `Rank` values by comparing their raw values.
