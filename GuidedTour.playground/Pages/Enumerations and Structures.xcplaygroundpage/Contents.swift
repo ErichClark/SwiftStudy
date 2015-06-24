@@ -57,12 +57,14 @@ print(jack.rawValue)
 //:
 if let convertedRank = Rank(rawValue: 3) {
     let threeDescription = convertedRank.simpleDescription()
+    print("\(threeDescription)")
 }
 
 //: The member values of an enumeration are actual values, not just another way of writing their raw values. In fact, in cases where there isn’t a meaningful raw value, you don’t have to provide one.
 //:
-enum Suit {
-    case Spades, Hearts, Diamonds, Clubs
+enum Suit: Int {
+    case Spades = 1
+    case Hearts, Diamonds, Clubs
     func simpleDescription() -> String {
         switch self {
             case .Spades:
@@ -102,23 +104,19 @@ print("\(heartsDescription) are \(hearts.color())")
 //:
 // Still working on this one!
 
-struct Card {
-//    var rank: Rank
-//    var suit: Suit
-//    func simpleDescription() -> String {
-//        return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
- //   }
-    func makeDeck() {
-        for suit in Suit(){
-            for rank in Rank{
-                simpleDescription()
-            }
-        }
-    }
-}
+  //  func makeDeck() {
+  //      for suit in Suit(){
+    //        for rank in Rank{
+      //          simpleDescription()
+        //    }
+  //      }
+    //}
+
 //let threeOfSpades = Card(rank: .Three, suit: .Spades)
 //let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
+func makeDeck(){
+}
 
 //: > **Experiment**:
 //: > Add a method to `Card` that creates a full deck of cards, with one card of each combination of rank and suit.
