@@ -2,10 +2,12 @@
 //:
 //: Use `func` to declare a function. Call a function by following its name with a list of arguments in parentheses. Use `->` to separate the parameter names and types from the function’s return type.
 //:
+"CHRIS CLARK MARKS: PASSED"
+
 func greet(name: String, lunchSpecial: String) -> String {
     return "Hello \(name), today's lunch special is \(lunchSpecial)."
 }
-greet("Bob",  lunchSpecial: "pizza")
+print(greet("Bob",  lunchSpecial: "pizza"))
 
 
 //: > **Experiment**:

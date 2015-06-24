@@ -8,7 +8,7 @@ class Shape {
         return "A shape with \(numberOfSides) sides."
     }
 }
-
+// TODO
 //: > **Experiment**:
 //: > Add a constant property with `let`, and add another method that takes an argument.
 //:
@@ -41,10 +41,7 @@ class NamedShape {
 //:
 //: Methods on a subclass that override the superclass’s implementation are marked with `override`—overriding a method by accident, without `override`, is detected by the compiler as an error. The compiler also detects methods with `override` that don’t actually override any method in the superclass.
 //:
-//I tried to use math constants from Cocoa but found them very wonky. I got it to calculate with the M_PI constant, but it gave me a huge number and wouldn't show my output, like I crashed Xcode or something. So I commented out that code. Maybe it's my setup? I thought maybe you could try it and see if it works on your computer.
-
-//import Cocoa
-//var M_PI: CDouble {get}
+import Darwin
 
 class Square: NamedShape {
     var sideLength: Double
@@ -76,9 +73,7 @@ class Circle: NamedShape{
     }
     var area: Double {
         get {
-  //          return radius * radius * M_PI
-            return radius * radius * 3.14
-            
+           return radius * radius * Double (M_PI)
         }
     }
     

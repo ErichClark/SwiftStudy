@@ -2,6 +2,8 @@
 //:
 //: Use `if` and `switch` to make conditionals, and use `for`-`in`, `for`, `while`, and `repeat`-`while` to make loops. Parentheses around the condition or loop variable are optional. Braces around the body are required.
 //:
+"CHRIS CLARK MARKS: PASSED"
+
 let individualScores = [75, 43, 103, 87, 12]
 var teamScore = 0
 for score in individualScores {
@@ -93,7 +95,7 @@ print(m)
 //: You can keep an index in a loop—either by using `..<` to make a range of indexes or by writing an explicit initialization, condition, and increment. These two loops do the same thing:
 //:
 var firstForLoop = 0
-for i in 0..<5 {
+for i in 0..<4 {
     firstForLoop += i
 }
 print(firstForLoop)
