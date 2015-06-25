@@ -121,6 +121,8 @@ makeDeck()
 //:
 //: For example, consider the case of requesting the sunrise and sunset time from a server. The server either responds with the information or it responds with some error information.
 //:
+// No idea what's going on here.
+
 enum ServerResponse {
     case Result(String, String, String)
     case Error(String)

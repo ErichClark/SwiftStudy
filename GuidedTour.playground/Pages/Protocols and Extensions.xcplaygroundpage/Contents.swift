@@ -30,6 +30,13 @@ var b = SimpleStructure()
 b.adjust()
 let bDescription = b.simpleDescription
 
+enum SimpleEnum: ExampleProtocol {
+    case: "A simple enumeration"
+    mutating func adjust() {
+        simpleDescription += "mangled"
+    }
+}
+
 //: > **Experiment**:
 //: > Write an enumeration that conforms to this protocol.
 //:
