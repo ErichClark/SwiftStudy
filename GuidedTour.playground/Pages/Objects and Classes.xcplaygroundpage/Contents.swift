@@ -3,13 +3,17 @@
 //: Use `class` followed by the class’s name to create a class. A property declaration in a class is written the same way as a constant or variable declaration, except that it is in the context of a class. Likewise, method and function declarations are written the same way.
 //:
 class Shape {
-    let moreSides = 2
+    let betterSides = 4
     var numberOfSides = 0
     func simpleDescription() -> String {
         return "A shape with \(numberOfSides) sides."
     }
     func suggestShape() -> String {
-        return "Your shape would be better if it had \(numberOfSides) sides."
+        if numberOfSides == 4 {
+            return ("Your shape is perfect.")
+        }else{
+            return ("Your shape would be better if it had \(betterSides) sides.")
+        }
     }
 }
 
@@ -19,7 +23,7 @@ class Shape {
 //: Create an instance of a class by putting parentheses after the class name. Use dot syntax to access the properties and methods of the instance.
 //:
 var shape = Shape()
-shape.numberOfSides = 7
+shape.numberOfSides = 5
 print(shape.simpleDescription())
 print(shape.suggestShape())
 

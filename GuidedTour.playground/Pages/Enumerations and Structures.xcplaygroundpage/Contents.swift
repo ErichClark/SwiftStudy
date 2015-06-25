@@ -97,21 +97,22 @@ print("\(Suit.Hearts.simpleDescription()) are \(Suit.Hearts.color())")
 //:
 //: Use `struct` to create a structure. Structures support many of the same behaviors as classes, including methods and initializers. One of the most important differences between structures and classes is that structures are always copied when they are passed around in your code, but classes are passed by reference.
 //:
-// Still working on this one!
-
-  //  func makeDeck() {
-  //      for suit in Suit(){
-    //        for rank in Rank{
-      //          simpleDescription()
-        //    }
-  //      }
-    //}
-
-//let threeOfSpades = Card(rank: .Three, suit: .Spades)
-//let threeOfSpadesDescription = threeOfSpades.simpleDescription()
-
-func makeDeck(){
+func makeDeck() {
+    print("Here's your deck, sir.")
+    var a = 1
+    while let suit = Suit(rawValue: a) {
+        var b = 1
+        while let rank = Rank(rawValue: b) {
+            print("\(rank.simpleDescription()) of \(suit.simpleDescription())")
+            b++
+        }
+    a++
+    }
 }
+makeDeck()
+
+
+
 
 //: > **Experiment**:
 //: > Add a method to `Card` that creates a full deck of cards, with one card of each combination of rank and suit.
@@ -121,16 +122,18 @@ func makeDeck(){
 //: For example, consider the case of requesting the sunrise and sunset time from a server. The server either responds with the information or it responds with some error information.
 //:
 enum ServerResponse {
-    case Result(String, String)
+    case Result(String, String, String)
     case Error(String)
+    case Success(String)
 }
-
-let success = ServerResponse.Result("6:00 am", "8:09 pm")
+ 
+let success = ServerResponse.Result("6:00 am", "5:00 pm", "8:09 pm")
 let failure = ServerResponse.Error("Out of cheese.")
+let success = ServerResponse.Success("A great day!")
 
 switch success {
-    case let .Result(sunrise, sunset):
-        let serverResponse = "Sunrise is at \(sunrise) and sunset is at \(sunset)."
+    case let .Result(sunrise, teatime, sunset):
+        let serverResponse = "Sunrise is at \(sunrise), tea is at \(teatime), and sunset is at \(sunset)."
     case let .Error(error):
         let serverResponse = "Failure...  \(error)"
 }
