@@ -3,12 +3,16 @@
 //: Use `class` followed by the class’s name to create a class. A property declaration in a class is written the same way as a constant or variable declaration, except that it is in the context of a class. Likewise, method and function declarations are written the same way.
 //:
 class Shape {
+    let moreSides = 2
     var numberOfSides = 0
     func simpleDescription() -> String {
         return "A shape with \(numberOfSides) sides."
     }
+    func suggestShape() -> String {
+        return "Your shape would be better if it had \(numberOfSides) sides."
+    }
 }
-// TODO
+
 //: > **Experiment**:
 //: > Add a constant property with `let`, and add another method that takes an argument.
 //:
@@ -16,7 +20,9 @@ class Shape {
 //:
 var shape = Shape()
 shape.numberOfSides = 7
-var shapeDescription = shape.simpleDescription()
+print(shape.simpleDescription())
+print(shape.suggestShape())
+
 
 //: This version of the `Shape` class is missing something important: an initializer to set up the class when an instance is created. Use `init` to create one.
 //:
