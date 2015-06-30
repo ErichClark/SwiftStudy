@@ -2,10 +2,15 @@
 //:
 //: Use `enum` to create an enumeration. Like classes and all other named types, enumerations can have methods associated with them.
 //:
+//TO GRADE
+
 enum Rank: Int {
     case Ace = 1
     case Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten
     case Jack, Queen, King
+    static func values() -> [Rank]{
+        return [.Ace, .Two, .Three, .Four, .Five, .Six, .Seven, .Eight, .Nine, .Ten, .Jack, .Queen, .King]
+    }
     func simpleDescription() -> String {
         switch self {
             case .Ace:
@@ -65,6 +70,9 @@ if let convertedRank = Rank(rawValue: 3) {
 enum Suit: Int {
     case Spades = 1
     case Hearts, Diamonds, Clubs
+    static func values() -> [Suit]{
+        return [.Spades, .Hearts, .Diamonds, .Clubs]
+    }
     func simpleDescription() -> String {
         switch self {
             case .Spades:
@@ -97,16 +105,13 @@ print("\(Suit.Hearts.simpleDescription()) are \(Suit.Hearts.color())")
 //:
 //: Use `struct` to create a structure. Structures support many of the same behaviors as classes, including methods and initializers. One of the most important differences between structures and classes is that structures are always copied when they are passed around in your code, but classes are passed by reference.
 //:
+
 func makeDeck() {
     print("Here's your deck, sir.")
-    var a = 1
-    while let suit = Suit(rawValue: a) {
-        var b = 1
-        while let rank = Rank(rawValue: b) {
+    for suit in Suit.values() {
+        for rank in Rank.values() {
             print("\(rank.simpleDescription()) of \(suit.simpleDescription())")
-            b++
         }
-    a++
     }
 }
 makeDeck()
@@ -121,25 +126,30 @@ makeDeck()
 //:
 //: For example, consider the case of requesting the sunrise and sunset time from a server. The server either responds with the information or it responds with some error information.
 //:
-// No idea what's going on here.
-
+/*
 enum ServerResponse {
     case Result(String, String, String)
     case Error(String)
-    case Success(String)
+    case TimeOut(String)
 }
  
-let success = ServerResponse.Result("6:00 am", "5:00 pm", "8:09 pm")
+let result = ServerResponse.Result("6:00 am", "5:00 pm", "8:09 pm")
 let failure = ServerResponse.Error("Out of cheese.")
-let success = ServerResponse.Success("A great day!")
+let timeout = ServerResponse.TimeOut("a great day!")
 
 switch success {
     case let .Result(sunrise, teatime, sunset):
         let serverResponse = "Sunrise is at \(sunrise), tea is at \(teatime), and sunset is at \(sunset)."
     case let .Error(error):
         let serverResponse = "Failure...  \(error)"
+    case let .TimeOut(greeting):
+        let serverResponse = "We hope you have a \(timeout)"
 }
 
+// TODO make a func that returns input to a functi
+// too many characters or too large a number, return timeout
+
+*/
 //: > **Experiment**:
 //: > Add a third case to `ServerResponse` and to the switch.
 //:

@@ -23,16 +23,21 @@ possibleInteger = .Some(100)
 
 //: Use `where` after the type name to specify a list of requirements—for example, to require the type to implement a protocol, to require two types to be the same, or to require a class to have a particular superclass.
 //:
-func anyCommonElements <T, U where T: SequenceType, U: SequenceType, T.Generator.Element: Equatable, T.Generator.Element == U.Generator.Element> (lhs: T, _ rhs: U) -> Bool {
+// What  I want to do is 
+
+func anyCommonElements <T, U where T: SequenceType, U: SequenceType, T.Generator.Element: Equatable, T.Generator.Element == U.Generator.Element> (lhs: T, _ rhs: U) -> Array<T.Generator.Element> {
+    var inCommon = Array<T.Generator.Element>()
     for lhsItem in lhs {
         for rhsItem in rhs {
             if lhsItem == rhsItem {
-                return true
+                inCommon.append(rhsitem)
             }
         }
+        return inCommon
     }
-   return false
+
 }
+
 anyCommonElements([1, 2, 3], [3])
 
 //: > **Experiment**:

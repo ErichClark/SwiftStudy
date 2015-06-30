@@ -11,7 +11,6 @@ protocol ExampleProtocol {
 //:
 class SimpleClass: ExampleProtocol {
      var simpleDescription: String = "A very simple class."
-     var anotherProperty: Int = 69105
      func adjust() {
           simpleDescription += "  Now 100% adjusted."
      }
@@ -30,12 +29,27 @@ var b = SimpleStructure()
 b.adjust()
 let bDescription = b.simpleDescription
 
-enum SimpleEnum: ExampleProtocol {
-    case: "A simple enumeration"
-    mutating func adjust() {
-        simpleDescription += "mangled"
+enum SimpleEnumeration: ExampleProtocol {
+    case Basic, Adjusted
+    
+    var simpleDescription: String {
+        switch self {
+        case .Basic:
+            return "A simple Enumeration"
+        case .Adjusted:
+            return "A simple Enumeration [adjusted]"
+        }
+    }
+    
+    mutating func adjust()  {
+        self = SimpleEnumeration.Adjusted
     }
 }
+
+var c = SimpleEnumeration.Basic
+c.simpleDescription
+c.adjust()
+c.simpleDescription
 
 //: > **Experiment**:
 //: > Write an enumeration that conforms to this protocol.
@@ -52,7 +66,16 @@ extension Int: ExampleProtocol {
         self += 42
     }
  }
+extension Double: ExampleProtocol {
+    var simpleDescription: String {
+        return "The number \(self)"
+    }
+    mutating func adjust() {
+        self += 42
+    }
+}
 print(7.simpleDescription)
+print(8.1.simpleDescription)
 
 //: > **Experiment**:
 //: > Write an extension for the `Double` type that adds an `absoluteValue` property.
@@ -61,7 +84,6 @@ print(7.simpleDescription)
 //:
 let protocolValue: ExampleProtocol = a
 print(protocolValue.simpleDescription)
-// print(protocolValue.anotherProperty)  // Uncomment to see the error
 
 //: Even though the variable `protocolValue` has a runtime type of `SimpleClass`, the compiler treats it as the given type of `ExampleProtocol`. This means that you can’t accidentally access methods or properties that the class implements in addition to its protocol conformance.
 //:
