@@ -11,6 +11,7 @@ func repeatItem<Item>(item: Item, numberOfTimes: Int) -> [Item] {
 }
 repeatItem("knock", numberOfTimes:4)
 
+// Experiment- generic function, 2 args of same type, return an array with item 1, 2, 2, 1
 //: You can make generic forms of functions and methods, as well as classes, enumerations, and structures.
 //:
 // Reimplement the Swift standard library's optional type

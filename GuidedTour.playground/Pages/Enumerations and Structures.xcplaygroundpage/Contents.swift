@@ -2,13 +2,13 @@
 //:
 //: Use `enum` to create an enumeration. Like classes and all other named types, enumerations can have methods associated with them.
 //:
-//TO GRADE
+"CHRIS CLARK MARKS: PASSED"
 
 enum Rank: Int {
     case Ace = 1
     case Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten
     case Jack, Queen, King
-    static func values() -> [Rank]{
+    static var values:[Rank]{
         return [.Ace, .Two, .Three, .Four, .Five, .Six, .Seven, .Eight, .Nine, .Ten, .Jack, .Queen, .King]
     }
     func simpleDescription() -> String {
@@ -70,7 +70,7 @@ if let convertedRank = Rank(rawValue: 3) {
 enum Suit: Int {
     case Spades = 1
     case Hearts, Diamonds, Clubs
-    static func values() -> [Suit]{
+    static var values: [Suit]{
         return [.Spades, .Hearts, .Diamonds, .Clubs]
     }
     func simpleDescription() -> String {
@@ -108,8 +108,8 @@ print("\(Suit.Hearts.simpleDescription()) are \(Suit.Hearts.color())")
 
 func makeDeck() {
     print("Here's your deck, sir.")
-    for suit in Suit.values() {
-        for rank in Rank.values() {
+    for suit in Suit.values {
+        for rank in Rank.values {
             print("\(rank.simpleDescription()) of \(suit.simpleDescription())")
         }
     }
@@ -126,14 +126,14 @@ makeDeck()
 //:
 //: For example, consider the case of requesting the sunrise and sunset time from a server. The server either responds with the information or it responds with some error information.
 //:
-/*
+
 enum ServerResponse {
     case Result(String, String, String)
     case Error(String)
     case TimeOut(String)
 }
  
-let result = ServerResponse.Result("6:00 am", "5:00 pm", "8:09 pm")
+let success = ServerResponse.Result("6:00 am", "5:00 pm", "8:09 pm")
 let failure = ServerResponse.Error("Out of cheese.")
 let timeout = ServerResponse.TimeOut("a great day!")
 
@@ -146,10 +146,8 @@ switch success {
         let serverResponse = "We hope you have a \(timeout)"
 }
 
-// TODO make a func that returns input to a functi
-// too many characters or too large a number, return timeout
 
-*/
+
 //: > **Experiment**:
 //: > Add a third case to `ServerResponse` and to the switch.
 //:
