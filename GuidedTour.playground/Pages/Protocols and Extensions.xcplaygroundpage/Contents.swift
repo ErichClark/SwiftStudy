@@ -71,14 +71,18 @@ extension Int: ExampleProtocol {
  }
 extension Double: ExampleProtocol {
     var simpleDescription: String {
-        return "The number \(self)"
+        return "The new absolute value of the number is \(self)"
     }
+    
     mutating func adjust() {
         self += 42
     }
 }
 print(7.simpleDescription)
-print(8.1.simpleDescription)
+print((-8.1).simpleDescription)
+//print(-24.simpleDescription)
+
+
 
 //: > **Experiment**:
 //: > Write an extension for the `Double` type that adds an `absoluteValue` property.
