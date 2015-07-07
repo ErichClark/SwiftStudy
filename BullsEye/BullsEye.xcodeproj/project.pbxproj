@@ -14,6 +14,9 @@
 		7738DCC81B47376300C25396 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7738DCC61B47376300C25396 /* LaunchScreen.storyboard */; };
 		7738DCD31B47376300C25396 /* BullsEyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738DCD21B47376300C25396 /* BullsEyeTests.swift */; };
 		7738DCDE1B47376300C25396 /* BullsEyeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738DCDD1B47376300C25396 /* BullsEyeUITests.swift */; };
+		7741A5FA1B4B9473006F4B01 /* BullsEye.html in Resources */ = {isa = PBXBuildFile; fileRef = 7741A5F91B4B9472006F4B01 /* BullsEye.html */; };
+		77EE73EC1B4B00F900CFF24D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EE73EB1B4B00F900CFF24D /* AboutViewController.swift */; };
+		77EE73EE1B4B290400CFF24D /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 77EE73ED1B4B290400CFF24D /* Images */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		7738DCD91B47376300C25396 /* BullsEyeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BullsEyeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7738DCDD1B47376300C25396 /* BullsEyeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullsEyeUITests.swift; sourceTree = "<group>"; };
 		7738DCDF1B47376300C25396 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7741A5F91B4B9472006F4B01 /* BullsEye.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = BullsEye.html; sourceTree = "<group>"; };
+		77EE73EB1B4B00F900CFF24D /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		77EE73ED1B4B290400CFF24D /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Images; path = "../../../Downloads/The iOS Apprentice 1 - Getting Started/Resources/Images"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +103,14 @@
 		7738DCBC1B47376300C25396 /* BullsEye */ = {
 			isa = PBXGroup;
 			children = (
+				7741A5F91B4B9472006F4B01 /* BullsEye.html */,
+				77EE73ED1B4B290400CFF24D /* Images */,
 				7738DCBD1B47376300C25396 /* AppDelegate.swift */,
-				7738DCBF1B47376300C25396 /* ViewController.swift */,
-				7738DCC11B47376300C25396 /* Main.storyboard */,
-				7738DCC41B47376300C25396 /* Assets.xcassets */,
 				7738DCC61B47376300C25396 /* LaunchScreen.storyboard */,
+				7738DCC11B47376300C25396 /* Main.storyboard */,
+				7738DCBF1B47376300C25396 /* ViewController.swift */,
+				77EE73EB1B4B00F900CFF24D /* AboutViewController.swift */,
+				7738DCC41B47376300C25396 /* Assets.xcassets */,
 				7738DCC91B47376300C25396 /* Info.plist */,
 			);
 			path = BullsEye;
@@ -229,9 +238,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77EE73EE1B4B290400CFF24D /* Images in Resources */,
 				7738DCC81B47376300C25396 /* LaunchScreen.storyboard in Resources */,
 				7738DCC51B47376300C25396 /* Assets.xcassets in Resources */,
 				7738DCC31B47376300C25396 /* Main.storyboard in Resources */,
+				7741A5FA1B4B9473006F4B01 /* BullsEye.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77EE73EC1B4B00F900CFF24D /* AboutViewController.swift in Sources */,
 				7738DCC01B47376300C25396 /* ViewController.swift in Sources */,
 				7738DCBE1B47376300C25396 /* AppDelegate.swift in Sources */,
 			);
@@ -488,6 +500,7 @@
 				7738DCE41B47376300C25396 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7738DCE51B47376300C25396 /* Build configuration list for PBXNativeTarget "BullsEyeTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +509,7 @@
 				7738DCE71B47376300C25396 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7738DCE81B47376300C25396 /* Build configuration list for PBXNativeTarget "BullsEyeUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +518,7 @@
 				7738DCEA1B47376300C25396 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

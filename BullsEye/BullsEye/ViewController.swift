@@ -28,8 +28,23 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startNewRound()
+        startOver()
         updateLabels()
+        let thumbImageNormal = UIImage(named: "Images/SliderThumb-Normal")
+        slider.setThumbImage(thumbImageNormal, forState: .Normal)
+        
+        let thumbImageHighlighted = UIImage(named: "Images/SliderThumb-Highlighted")
+        slider.setThumbImage(thumbImageHighlighted, forState: .Highlighted)
+        
+        let insets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
+        
+        if let trackLeftImage = UIImage(named: "Images/SliderTrackLeft") {
+            let trackLeftResizable =
+            trackLeftImage.resizableImageWithCapInsets(insets); slider.setMinimumTrackImage(trackLeftResizable, forState: .Normal)
+        }
+        if let trackRightImage = UIImage(named: "Images/SliderTrackRight") {
+            let trackRightResizable = trackRightImage.resizableImageWithCapInsets(insets)
+            slider.setMaximumTrackImage(trackRightResizable, forState: .Normal) }
     }
 
     func startNewRound() {
@@ -50,10 +65,21 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func startOver(){
+        score = 0
+        round = 0
+        startNewRound()
+    }
+    
+    @IBAction func startNewGame() {
+        startOver()
+        updateLabels()
+    }
+    
     @IBAction func showAlert() {
         let difference = abs(currentValue - targetValue)
         var points = MAX_POINTS - difference
-        let message = "You scored \(points) points"
+        
         
         
         var title: String
@@ -73,15 +99,18 @@ class ViewController: UIViewController {
         }
         
         score += points
+        let message = "You scored \(points) points"  // Improvement to RayW code- moving message to this line inludes
+                                                     // score bonuses in popup display
         
-        let alert = UIAlertController(title: "Hello, World",
+        let alert = UIAlertController(title: "Your Score",
             message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: title, style: .Default, handler: nil)
+        let action = UIAlertAction(title: title, style: .Default,  // bug in RayW code- they put "OK" instead of
+                                handler: { action in               // using the self String variable
+                                    self.startNewRound()
+                                    self.updateLabels()
+                                })
         alert.addAction(action)
         presentViewController(alert, animated: true, completion: nil)
-        
-        startNewRound()
-        updateLabels()
     }
 
     @IBAction func sliderMoved(slider: UISlider) {
